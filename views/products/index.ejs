@@ -1,0 +1,47 @@
+<%- include("../partials/head") %>
+
+    <body>
+        <h1>Tabel Produk FSW 3</h1>
+
+        <table>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Action</th>
+            <% products.map((product)=> { %>
+                <tr>
+                    <td>
+                        <%= product.id %>
+                    </td>
+                    <td>
+                        <%= product.name %>
+                    </td>
+                    <td>
+                        <%= product.price %>
+                    </td>
+                    <td>
+                        <%= product.stock %>
+                    </td>
+                    <td>
+                        <a href="/admin/products/edit/<%= product.id %>">
+                            <button>
+                                edit
+                            </button>
+                        </a>
+                        <form action="/products/delete/<%= product.id %>" method="post">
+                            <button>
+                                delete
+                            </button>
+                        </form>
+                    </td>
+
+                </tr>
+                <% }) %>
+        </table>
+
+        <a href="/admin/products/create"><button>create</button></a>
+
+    </body>
+
+    </html>
